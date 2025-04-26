@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillItems = document.querySelectorAll('.skill-item');
 
     skillItems.forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (e) => {
         const label = item.querySelector('.skill-label');
         if (label) {
           label.style.opacity = '1';
@@ -34,22 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
             label.style.transform = 'translateY(10px)';
           }, 2000);
         }
+
+        const carousel = item.closest('.carousel');
+        const track = carousel.querySelector('.carousel-track');
+
+        // 🛠 NEW: Pause only temporarily
+        track.style.animationPlayState = 'paused';
+        setTimeout(() => {
+          track.style.animationPlayState = 'running';
+        }, 2000);
       });
     });
   }
 
   attachSkillListeners();
 
-  const carouselWrappers = document.querySelectorAll('.carousel');
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  carouselWrappers.forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    carousel.addEventListener('mouseenter', () => {
-      track.style.animationPlayState = 'paused';
+  if (!isTouchDevice) {
+    const carouselWrappers = document.querySelectorAll('.carousel');
+
+    carouselWrappers.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track');
+      carousel.addEventListener('mouseenter', () => {
+        track.style.animationPlayState = 'paused';
+      });
+      carousel.addEventListener('mouseleave', () => {
+        track.style.animationPlayState = 'running';
+      });
     });
-    carousel.addEventListener('mouseleave', () => {
-      track.style.animationPlayState = 'running';
-    });
-  });
+  }
 });
-
