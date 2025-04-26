@@ -213,7 +213,7 @@ body {
   font-weight: bold;
   mix-blend-mode: difference; 
   color: #ffffff;
-  position: relative;
+  position: absolute;
   z-index: 2;
   pointer-events: none;
 }
@@ -443,10 +443,6 @@ body:not(.fun-mode) .btn3 {
 
   .button {
     font-size: 2svh;
-  }
-
-  .text-mask {
-    font-size: 3svh
   }
   
   .white-text {
