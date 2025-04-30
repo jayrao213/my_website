@@ -209,7 +209,7 @@ body {
 }
 
 .text-mask {
-  font-size: clamp(2svh, 4svh, 4svh);
+  font-size: 4svh;
   font-weight: bold;
   mix-blend-mode: difference; 
   color: #ffffff;
@@ -441,8 +441,8 @@ body:not(.fun-mode) .btn3 {
     height: 27svh; 
   }
 
-  .button {
-    font-size: 2svh;
+  .text-mask {
+    font-size: 3svh;
   }
   
   .white-text {
