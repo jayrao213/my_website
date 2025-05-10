@@ -389,6 +389,8 @@ body:not(.fun-mode) .button a:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .contact-form label {
@@ -435,6 +437,24 @@ body:not(.fun-mode) .button a:hover {
   text-align: center;
   margin-top: 1rem;
   font-weight: bold;
+}
+
+button.slide-out {
+  animation: slideOutRight 0.4s ease forwards;
+}
+
+button.slide-in {
+  animation: slideInLeft 0.4s ease forwards;
+}
+
+@keyframes slideOutRight {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(150%); opacity: 0; }
+}
+
+@keyframes slideInLeft {
+  0% { transform: translateX(-150%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
 }
 
 .carousel {

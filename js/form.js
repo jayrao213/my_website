@@ -4,6 +4,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const form = event.target;
   const formData = new FormData(form);
   const statusDiv = document.getElementById('form-status');
+  const submitButton = form.querySelector("button[type='submit']");
 
   const honeypot = document.getElementById('website').value;
   if (honeypot) {
@@ -21,6 +22,18 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
     if (response.ok) {
       showMessage("Thank you for your message!", "success");
+
+      submitButton.classList.add("slide-out");
+
+      setTimeout(() => {
+        submitButton.classList.remove("slide-out");
+        submitButton.classList.add("slide-in");
+
+        setTimeout(() => {
+          submitButton.classList.remove("slide-in");
+        }, 600);
+      }, 2500);
+
       form.reset();
     } else {
       showMessage("Oops! Something went wrong.", "error");
